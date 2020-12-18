@@ -1,0 +1,7 @@
+{
+  "name": "supply-chain-system",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
