@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonButton, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent } from '@ionic/react';
+import { IonContent, IonIcon, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonButton, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent } from '@ionic/react';
 // import './Login.css'
 
 const Login: React.FC = () => {
@@ -8,7 +8,7 @@ const Login: React.FC = () => {
   
     function loginUser() {
         // send to backend
-        // console.log(`mobileno is = ${mobileno} and password is = ${password}`);
+        console.log(`mobileno is = ${mobileno} and password is = ${password}`);
     }
 
     return (
@@ -20,9 +20,8 @@ const Login: React.FC = () => {
                 </IonCardHeader>
 
                 <IonCardContent>
-                    <IonInput placeholder="Mobile Number" onIonChange={(e: any)=> setmobileno(e.target.value)}/>
-                    <IonInput placeholder="Password" type="password" onIonChange={(e: any)=> setPassword(e.target.value)}/>
-                    <i className="fa fa-eye password-icon" />
+                    <IonInput placeholder="Mobile Number" onIonChange={(e: any)=> setmobileno(e.target.value)} required/>
+                    <IonInput placeholder="Password" type="password" onIonChange={(e: any)=> setPassword(e.target.value)} required/>
                     <IonButton onClick={loginUser}>Login</IonButton>
                 </IonCardContent>
             </IonCard>
