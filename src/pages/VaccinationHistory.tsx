@@ -34,7 +34,7 @@ const VaccinationHistory: React.FC = () => {
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Vaccination Schedule</IonTitle>
+                    <IonTitle>Appointments</IonTitle>
                 </IonToolbar>
             </IonHeader>
         <IonContent fullscreen>
@@ -45,12 +45,11 @@ const VaccinationHistory: React.FC = () => {
             </IonHeader>
             <IonModal isOpen={showModal} cssClass='my-custom-class' animated={true} onDidDismiss={() => setShowModal(false)}>
                 <IonItem>
-                    {!!(date)?<></> : <IonLabel className="select-date-class">Select your preferred date</IonLabel>}
-                    <IonDatetime class="ion-text-centre" mode="ios" id="dynamicDisabled" displayFormat="DD MMMM, YYYY" value={date} min={new Date().toISOString()} max="2025" onIonChange={e => setDate(e.detail.value!)}></IonDatetime>
+                    <IonDatetime placeholder="Select Date" style={{width: '100%'}} className="ion-text-center" mode="ios" id="dynamicDisabled" displayFormat="DD MMMM, YYYY" value={date} min={new Date().toISOString()} max="2025" onIonChange={e => setDate(e.detail.value!)}></IonDatetime>
                 </IonItem>
                 <IonItem>
                     {/* {!!(center)?<></> : <IonLabel>Select your preferred centre</IonLabel>} */}
-                    <IonSelect mode="ios" placeholder="Select your preferred centre" value={center} interface="action-sheet" onIonChange={e => setCenter(e.detail.value!)}>
+                    <IonSelect mode="ios" style={{width: '100%'}} className="ion-text-center" placeholder="Select your preferred centre" value={center} interface="action-sheet" onIonChange={e => setCenter(e.detail.value!)}>
                             <IonSelectOption value="Columbia Asia Hospital">Columbia Asia Hospital</IonSelectOption>
                             <IonSelectOption value="Noble Hospital">Noble Hospital</IonSelectOption>
                             <IonSelectOption value="Sahayadri Super Specialty Hospital">Sahayadri Super Specialty Hospital</IonSelectOption>
@@ -59,12 +58,13 @@ const VaccinationHistory: React.FC = () => {
                             <IonSelectOption value="Ruby Hall Clinic">Ruby Hall Clinic</IonSelectOption>
                     </IonSelect>
                 </IonItem>
-                <IonButton className="modal-register-button" mode="ios" color="success" onClick={() => {
-                    sendReq()
+                <IonButton size="large" className="modal-register-button" mode="ios" color="success" onClick={() => {
+                    // sendReq()
+                    setRegistered(true)
                     setShowModal(false)}}>Register</IonButton>
             </IonModal>
             {!!(isRegistered)?<VaccinationDeets {...formFields[0]}></VaccinationDeets> : <><NoSchedule></NoSchedule></> }
-            <IonButton mode="ios" className="register-button" color="success" expand="block" onClick={() => setShowModal(true)}>Register for a vaccine now</IonButton>
+            <IonButton mode="ios" size="large" className="register-button" color="success" expand="block" onClick={() => setShowModal(true)}>Register for a vaccine now</IonButton>
         </IonContent>
         </IonPage>
   );
