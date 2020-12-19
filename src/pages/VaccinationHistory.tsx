@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { IonButton, IonContent, IonDatetime, IonHeader, IonImg, IonItem, IonLabel, IonModal, IonPage, IonSelect, IonSelectOption, IonText, IonThumbnail, IonTitle, IonToolbar } from '@ionic/react';
+import axios from 'axios';
+import { IonButton, IonContent, IonDatetime, IonHeader, IonImg, IonItem, IonLabel, IonModal, IonPage, IonSelect, IonSelectOption, IonText, IonThumbnail, IonTitle, IonToolbar, useIonViewWillEnter } from '@ionic/react';
 import './UserProfile.css'
 import NoSchedule from '../components/NoSchedule';
 import VaccinationDeets, { InputProps } from "../components/VaccinationDeets"
@@ -7,7 +8,6 @@ import VaccinationDeets, { InputProps } from "../components/VaccinationDeets"
 const VaccinationHistory: React.FC = () => {
 
     const [date, setDate] = useState<string>('');
-    const [time, setTime] = useState<string>();
     const [center, setCenter] = useState<string>('');
     const [showModal, setShowModal] = useState(false);
     const [isRegistered, setRegistered] = useState(false);
@@ -15,6 +15,20 @@ const VaccinationHistory: React.FC = () => {
     const formFields: InputProps[] = [
         {date, center}
     ];
+
+    const sendReq = (): any => {
+        console.log('sending req!');
+        axios.post('http://localhost:3000/user/apply-vaccine', {
+          })
+          .then(function (response) {
+            console.log(response);
+            setDate(response.data.date);
+            setCenter(response.data.center);
+            setRegistered(true);
+          })
+      };
+
+    
 
     return (
         <IonPage>
@@ -46,7 +60,7 @@ const VaccinationHistory: React.FC = () => {
                     </IonSelect>
                 </IonItem>
                 <IonButton className="modal-register-button" mode="ios" color="success" onClick={() => {
-                    setRegistered(true)
+                    sendReq()
                     setShowModal(false)}}>Register</IonButton>
             </IonModal>
             {!!(isRegistered)?<VaccinationDeets {...formFields[0]}></VaccinationDeets> : <><NoSchedule></NoSchedule></> }
