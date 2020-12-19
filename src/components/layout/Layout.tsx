@@ -36,7 +36,7 @@ const Layout: React.FC = () => (
           </IonTabButton>
           <IonTabButton tab="tab2" href="/app/vaccinationHistory">
             <IonIcon icon={medkitOutline} />
-            <IonLabel>Vaccination History</IonLabel>
+            <IonLabel>Vaccination Schedule</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
