@@ -11,4 +11,8 @@ ionic serve
 
 ## UI of the app
 
-![User profile page](./UI screenshot 1.png)
+### User Profile page
+![User profile page](https://user-images.githubusercontent.com/55591314/103296087-54127400-4a1b-11eb-9e16-de9a06c8610b.png)
+
+### Vaccination Schedule page
+![Vaccination Schedule page](https://user-images.githubusercontent.com/55591314/103295937-0a298e00-4a1b-11eb-80a2-f929350297e1.png)
